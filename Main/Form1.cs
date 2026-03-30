@@ -26,25 +26,22 @@ namespace Main
 
         private void buttonClear_Click(object sender, EventArgs e)
         {
-            textBoxInput.Clear();     // очищает поле ввода
-            labelResult.Text = "Результат";    // очищает результат
+            textBoxInput.Clear();
+            labelResult.Text = "Результат";
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                // если сейчас кнопка очистки
                 if (this.ActiveControl == buttonClear)
                 {
-                    buttonClear.PerformClick(); // нажать кнопку
+                    buttonClear.PerformClick();
 
-                    // вернуть фокус в первое поле
                     textBoxInput.Focus();
                 }
                 else
                 {
-                    // обычный переход к следующему элементу
                     this.SelectNextControl(this.ActiveControl, true, true, true, true);
                 }
 
