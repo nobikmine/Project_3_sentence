@@ -23,6 +23,34 @@ namespace Main
             else
                 labelResult.Text = result;
         }
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            textBoxInput.Clear();     // очищает поле ввода
+            labelResult.Text = "Результат";    // очищает результат
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                // если сейчас кнопка очистки
+                if (this.ActiveControl == buttonClear)
+                {
+                    buttonClear.PerformClick(); // нажать кнопку
+
+                    // вернуть фокус в первое поле
+                    textBoxInput.Focus();
+                }
+                else
+                {
+                    // обычный переход к следующему элементу
+                    this.SelectNextControl(this.ActiveControl, true, true, true, true);
+                }
+
+                e.SuppressKeyPress = true;
+            }
+        }
     }
 
     public class Logic
