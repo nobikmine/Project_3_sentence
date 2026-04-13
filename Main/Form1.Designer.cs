@@ -2,60 +2,56 @@
 {
     partial class Form1
     {
-        /// <summary>
-        ///  Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        ///  Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
-            {
+            if (disposing && components != null)
                 components.Dispose();
-            }
+
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
-
-        /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             textBoxInput = new TextBox();
             buttonReverse = new Button();
+            buttonClear = new Button();
             labelResult = new Label();
             labelTask = new Label();
-            buttonClear = new Button();
             SuspendLayout();
             // 
             // textBoxInput
             // 
-            textBoxInput.Location = new Point(47, 41);
+            textBoxInput.Location = new Point(30, 27);
             textBoxInput.Name = "textBoxInput";
             textBoxInput.Size = new Size(298, 23);
             textBoxInput.TabIndex = 0;
             // 
             // buttonReverse
             // 
-            buttonReverse.Location = new Point(149, 84);
+            buttonReverse.Location = new Point(134, 56);
             buttonReverse.Name = "buttonReverse";
-            buttonReverse.Size = new Size(75, 23);
+            buttonReverse.Size = new Size(100, 25);
             buttonReverse.TabIndex = 1;
             buttonReverse.Text = "Запустить";
             buttonReverse.UseVisualStyleBackColor = true;
             buttonReverse.Click += buttonReverse_Click;
             // 
+            // buttonClear
+            // 
+            buttonClear.Location = new Point(286, 126);
+            buttonClear.Name = "buttonClear";
+            buttonClear.Size = new Size(75, 25);
+            buttonClear.TabIndex = 4;
+            buttonClear.Text = "Очистить";
+            buttonClear.UseVisualStyleBackColor = true;
+            buttonClear.Click += buttonClear_Click;
+            // 
             // labelResult
             // 
             labelResult.AutoSize = true;
-            labelResult.Location = new Point(149, 133);
+            labelResult.Location = new Point(47, 100);
             labelResult.Name = "labelResult";
             labelResult.Size = new Size(60, 15);
             labelResult.TabIndex = 2;
@@ -66,45 +62,32 @@
             labelTask.AutoSize = true;
             labelTask.Location = new Point(12, 9);
             labelTask.Name = "labelTask";
-            labelTask.Size = new Size(372, 15);
+            labelTask.Size = new Size(338, 15);
             labelTask.TabIndex = 3;
-            labelTask.Text = "Введите предложение. Программа развернет порядок слов в нем.";
-            // 
-            // buttonClear
-            // 
-            buttonClear.Location = new Point(287, 164);
-            buttonClear.Name = "buttonClear";
-            buttonClear.Size = new Size(75, 23);
-            buttonClear.TabIndex = 4;
-            buttonClear.Text = "Очистить";
-            buttonClear.UseVisualStyleBackColor = true;
-            buttonClear.Click += buttonClear_Click;
+            labelTask.Text = "Введите предложение. Программа развернет порядок слов.";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(389, 200);
-            Controls.Add(buttonClear);
-            Controls.Add(labelTask);
-            Controls.Add(labelResult);
-            Controls.Add(buttonReverse);
+            ClientSize = new Size(373, 159);
             Controls.Add(textBoxInput);
+            Controls.Add(buttonReverse);
+            Controls.Add(buttonClear);
+            Controls.Add(labelResult);
+            Controls.Add(labelTask);
             KeyPreview = true;
             Name = "Form1";
-            Text = "Разворот порядка слов";
+            Text = "Разворот слов";
             KeyDown += Form1_KeyDown;
             ResumeLayout(false);
             PerformLayout();
         }
 
-
-        #endregion
-
         private TextBox textBoxInput;
         private Button buttonReverse;
+        private Button buttonClear;
         private Label labelResult;
         private Label labelTask;
-        private Button buttonClear;
     }
 }

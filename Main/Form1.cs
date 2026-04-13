@@ -1,3 +1,6 @@
+using System;
+using System.Windows.Forms;
+
 namespace Main
 {
     public partial class Form1 : Form
@@ -7,7 +10,6 @@ namespace Main
             InitializeComponent();
             textBoxInput.Text = Properties.Settings.Default.text;
         }
-
         private void buttonReverse_Click(object sender, EventArgs e)
         {
             string input = textBoxInput.Text;
@@ -16,70 +18,69 @@ namespace Main
             Properties.Settings.Default.Save();
 
             Logic logic = new Logic();
+
+            if (!logic.HasWords(input))
+            {
+                MessageBox.Show("Ошибка: Введите текст!");
+                return;
+            }
             string result = logic.ReverseWords(input);
 
             if (result == "")
-                MessageBox.Show("Ошибка!");
+            {
+                MessageBox.Show("Ошибка: В предложении нет слов!");
+            }
             else
+            {
                 labelResult.Text = result;
+            }
         }
-
         private void buttonClear_Click(object sender, EventArgs e)
         {
             textBoxInput.Clear();
             labelResult.Text = "Результат";
+            textBoxInput.Focus();
         }
-
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (this.ActiveControl == buttonClear)
+                if (ActiveControl == buttonClear)
                 {
                     buttonClear.PerformClick();
-
                     textBoxInput.Focus();
                 }
                 else
                 {
-                    this.SelectNextControl(this.ActiveControl, true, true, true, true);
+                    SelectNextControl(ActiveControl, true, true, true, true);
                 }
 
                 e.SuppressKeyPress = true;
             }
         }
     }
-
     public class Logic
     {
         public string ReverseWords(string sentence)
         {
-            if (string.IsNullOrEmpty(sentence))
+            if (string.IsNullOrWhiteSpace(sentence))
                 return "";
 
-            sentence = sentence.Trim();
-            string[] words = sentence.Split(' ');
-            string[] reversedWords = new string[words.Length];
+            var words = sentence
+                .Trim()
+                .Split(' ', StringSplitOptions.RemoveEmptyEntries);
 
-            int j = 0;
-            for (int i = words.Length - 1; i >= 0; i--)
-            {
-                if (words[i] != "")
-                {
-                    reversedWords[j] = words[i];
-                    j++;
-                }
-            }
+            Array.Reverse(words);
 
-            string result = "";
-            for (int i = 0; i < j; i++)
-            {
-                result += reversedWords[i];
-                if (i < j - 1)
-                    result += " ";
-            }
+            return string.Join(" ", words);
+        }
+        public bool HasWords(string sentence)
+        {
+            if (sentence == null || sentence == "")
+                return false;
 
-            return result;
+            string trimmedSentence = sentence.Trim();
+            return trimmedSentence != "";
         }
     }
 }
