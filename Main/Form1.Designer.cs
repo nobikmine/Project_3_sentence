@@ -40,7 +40,7 @@
             // 
             // buttonClear
             // 
-            buttonClear.Location = new Point(286, 126);
+            buttonClear.Location = new Point(286, 122);
             buttonClear.Name = "buttonClear";
             buttonClear.Size = new Size(75, 25);
             buttonClear.TabIndex = 4;
@@ -51,7 +51,7 @@
             // labelResult
             // 
             labelResult.AutoSize = true;
-            labelResult.Location = new Point(47, 100);
+            labelResult.Location = new Point(39, 90);
             labelResult.Name = "labelResult";
             labelResult.Size = new Size(60, 15);
             labelResult.TabIndex = 2;

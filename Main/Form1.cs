@@ -17,14 +17,13 @@ namespace Main
             Properties.Settings.Default.text = input;
             Properties.Settings.Default.Save();
 
-            Logic logic = new Logic();
-
-            if (!logic.HasWords(input))
+            if (string.IsNullOrWhiteSpace(input))
             {
                 MessageBox.Show("Ошибка: Введите текст!");
                 return;
             }
-            string result = logic.ReverseWords(input);
+
+            string result = Logic.ReverseWords(input);
 
             if (result == "")
             {
@@ -59,9 +58,9 @@ namespace Main
             }
         }
     }
-    public class Logic
+    public static class Logic
     {
-        public string ReverseWords(string sentence)
+        public static string ReverseWords(string sentence)
         {
             if (string.IsNullOrWhiteSpace(sentence))
                 return "";
@@ -73,14 +72,6 @@ namespace Main
             Array.Reverse(words);
 
             return string.Join(" ", words);
-        }
-        public bool HasWords(string sentence)
-        {
-            if (sentence == null || sentence == "")
-                return false;
-
-            string trimmedSentence = sentence.Trim();
-            return trimmedSentence != "";
         }
     }
 }
